@@ -11,11 +11,8 @@ def index():
 
 @app.route('/predict',methods=['GET','POST'])
 def predict():
-    prediction=model.predict([[request.form.get("temperature")]])
-    prediction=model.predict([[17]])
-    
+    prediction = model.predict([[float(request.form.get("temperature"))]])
     output=round(prediction[0],2)
-    print(output)
     return render_template('index.html', prediction_text= f'Total revenue is Rs.{output}/-')
 
 
